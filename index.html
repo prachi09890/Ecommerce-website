@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E‑Shop — Home</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="wrap">
+    <header class="site">
+      <a class="logo" href="index.html">E‑Shop</a>
+      <nav class="muted">
+        <a href="products.html">Products</a> &nbsp;•&nbsp; <a href="about.html">About</a> &nbsp;•&nbsp; <a href="cart.html">Cart</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="copy">
+          <h1>Find what you love. Fast.</h1>
+          <p>Curated products, fair prices, and fast delivery — all in one place.</p>
+          <a class="btn" href="products.html">Shop Now</a>
+          <a class="btn secondary" href="about.html" style="margin-left:8px">Learn More</a>
+        </div>
+        <div class="visual">
+          <img src="" alt="hero" style="width:220px;height:140px;background:#eef;border-radius:10px;display:block">
+        </div>
+      </section>
+
+      <section>
+        <h2 style="margin-top:22px">Shop by Category</h2>
+        <div class="grid cats">
+          <div class="cat">Electronics</div>
+          <div class="cat">Fashion</div>
+          <div class="cat">Home</div>
+          <div class="cat">Beauty</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="margin-top:22px">Featured Products</h2>
+        <div class="grid featured">
+          <div class="product">
+            <h3>Earpod</h3>
+            <p class="muted">Wireless earbuds with clean sound.</p>
+            <p><strong>$19.99</strong></p>
+          </div>
+          <div class="product">
+            <h3>Smartphone</h3>
+            <p class="muted">Latest mid-range smartphone.</p>
+            <p><strong>$199.99</strong></p>
+          </div>
+          <div class="product">
+            <h3>Laptop</h3>
+            <p class="muted">Lightweight laptop for daily use.</p>
+            <p><strong>$499.99</strong></p>
+          </div>
+          <div class="product">
+            <h3>Tablet</h3>
+            <p class="muted">Portable tablet for entertainment.</p>
+            <p><strong>$299.99</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="feature">Free Shipping</div>
+        <div class="feature">Secure Payments</div>
+        <div class="feature">Easy Returns</div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> E‑Shop — <a href="about.html">About</a> • <a href="contact.html">Contact</a>
+    </footer>
+  </div>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Order Confirmed — Thank you!</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<header class="site">
+				<a class="logo" href="index.html">E‑Shop</a>
+				<nav class="muted">
+					<a href="products.html">Products</a> &nbsp;•&nbsp; <a href="cart.html">Cart</a>
+				</nav>
+			</header>
+
+			<main>
+				<section class="summary">
+					<div>
+						<div class="hero">
+							<h1>Thank you — your order is confirmed</h1>
+							<p class="muted">We've sent a receipt to your email. You can expect an update when your order ships.</p>
+							<p style="margin-top:12px">Order: <span id="orderId" class="order-number">#—</span></p>
+							<p class="muted" id="orderDate"></p>
+						</div>
+
+						<section style="margin-top:18px">
+							<h3>What happens next</h3>
+							<ul class="muted">
+								<li>We process and pack your items within 1–2 business days.</li>
+								<li>You’ll receive tracking information when your package ships.</li>
+								<li>If you have questions, reply to the order email or visit the <a href="about.html">help page</a>.</li>
+							</ul>
+						</section>
+
+						<div style="margin-top:18px">
+							<a class="btn" href="products.html">Continue shopping</a>
+							<a class="btn secondary" href="index.html" style="margin-left:8px">View account</a>
+						</div>
+					</div>
+
+					<aside class="order-box">
+						<h4 style="margin-top:0">Order summary</h4>
+						<div id="orderSummary">
+							<p class="muted">Items: <span id="itemCount">0</span></p>
+							<p class="muted">Subtotal: <strong id="subtotal">$0.00</strong></p>
+							<p class="muted">Estimated delivery: <strong id="eta">3–7 business days</strong></p>
+						</div>
+					</aside>
+				</section>
+			</main>
+
+			<footer style="margin-top:18px;text-align:center" class="muted">© <span id="year"></span> E‑Shop. All rights reserved.</footer>
+		</div>
+	</div>
+
+	<script>
+		// Small client-side script to populate order details (placeholder behavior)
+		(function(){
+			function randId(){return Math.floor(100000 + Math.random()*900000)}
+			var orderId = '#' + randId();
+			document.getElementById('orderId').textContent = orderId;
+			document.getElementById('orderDate').textContent = new Date().toLocaleString();
+			document.getElementById('year').textContent = new Date().getFullYear();
+
+			// Try to read a cart summary from localStorage (best-effort)
+			try{
+				var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+				var itemCount = cart.reduce((s,i)=>s + (i.quantity||1),0);
+				var subtotal = cart.reduce((s,i)=>s + (i.quantity||1) * (i.price||0),0);
+				document.getElementById('itemCount').textContent = itemCount;
+				document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+				// Optionally clear cart after order
+				// localStorage.removeItem('cart')
+			}catch(e){/* ignore */}
+		})();
+	</script>
+</body>
+</html>
+

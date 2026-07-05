@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About — E‑Shop</title>
+        <link rel="stylesheet" href="style.css">
+        
+</head>
+<body>
+    <div class="wrap">
+        <header class="site">
+            <a class="logo" href="index.html">E‑Shop</a>
+            <nav class="muted"><a href="products.html" style="margin-right:8px">Products</a>  <a href="cart.html" style="margin-right:8px">Cart</a></nav> <a href="index.html" style="margin-right:8px">Home</a>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>About E‑Shop</h1>
+                <p class="muted">We make shopping simple and delightful — curated products, fair prices, and fast service.</p>
+                <div class="values">
+                    <div class="value">
+                        <strong>Customer first</strong>
+                        <p class="muted">We prioritize clear communication and helpful support.</p>
+                    </div>
+                    <div class="value">
+                        <strong>Quality</strong>
+                        <p class="muted">We vet products to deliver value and reliability.</p>
+                    </div>
+                    <div class="value">
+                        <strong>Sustainability</strong>
+                        <p class="muted">We seek partners who share responsible practices.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid">
+                <div>
+                    <h2>Our Mission</h2>
+                    <p>At E‑Shop we aim to provide an excellent online shopping experience by combining a thoughtful product selection with attentive customer service and fast delivery.</p>
+
+                    <h2 style="margin-top:18px">Our Team</h2>
+                    <div class="team">
+                        <div class="member">
+                            <strong>Alice J.</strong>
+                            <p class="muted">Founder & CEO</p>
+                        </div>
+                        <div class="member">
+                            <strong>Ravi K.</strong>
+                            <p class="muted">Head of Product</p>
+                        </div>
+                        <div class="member">
+                            <strong>Maya L.</strong>
+                            <p class="muted">Head of Support</p>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top:18px">FAQ</h2>
+                    <p class="muted">See our <a href="checkout.html">checkout</a> and <a href="confirmation.html">order confirmation</a> pages for examples of order flow. For returns and refunds, visit our help page or contact support below.</p>
+                </div>
+
+                <aside class="contact">
+                    <h3 style="margin-top:0">Contact & Support</h3>
+                    <p class="muted">Questions? Email <a href="mailto:support@eshop.example">support@eshop.example</a> or call <strong>(555) 123‑4567</strong></p>
+                    <p class="muted">Business hours: Mon–Fri, 9am–5pm</p>
+                    <div style="margin-top:12px">
+                        <a class="btn" href="products.html">Shop now</a>
+                        <a class="btn secondary" href="about.html" style="margin-left:8px">Careers</a>
+                    </div>
+                </aside>
+            </section>
+        </main>
+
+        <footer style="text-align:center;margin-top:26px" class="muted">© <span id="year"></span> E‑Shop. All rights reserved.</footer>
+    </div>
+
+    <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

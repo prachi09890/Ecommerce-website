@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E‑Shop — Products</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="wrap">
+        <header class="site">
+            <a class="logo" href="index.html">E‑Shop</a>
+            <nav class="muted">
+                <a href="index.html">Home</a> &nbsp;•&nbsp; <a href="cart.html">Cart</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="controls">
+                <input class="search" id="search" type="search" placeholder="Search products...">
+                <select id="category">
+                    <option value="all">All categories</option>
+                    <option>Electronics</option>
+                    <option>Fashion</option>
+                    <option>Home</option>
+                    <option>Beauty</option>
+                </select>
+                <button class="btn" id="clearFilter">Clear</button>
+            </section>
+
+            <section>
+                <h2>Products</h2>
+                <div class="grid products" id="productGrid">
+                    <article class="card product" data-id="p1" data-name="Earpod" data-price="19.99">
+                        <div class="product-image"></div>
+                        <h3>Earpod</h3>
+                        <p class="muted">Wireless earbuds with crisp sound.</p>
+                        <div class="price">$19.99</div>
+                        <button class="btn add" data-id="p1">Add to cart</button>
+                    </article>
+
+                    <article class="card product" data-id="p2" data-name="Smartphone" data-price="199.99">
+                        <div class="product-image"></div>
+                        <h3>Smartphone</h3>
+                        <p class="muted">Feature-rich smartphone.</p>
+                        <div class="price">$199.99</div>
+                        <button class="btn add" data-id="p2">Add to cart</button>
+                    </article>
+
+                    <article class="card product" data-id="p3" data-name="Laptop" data-price="499.99">
+                        <div class="product-image"></div>
+                        <h3>Laptop</h3>
+                        <p class="muted">Lightweight laptop for productivity.</p>
+                        <div class="price">$499.99</div>
+                        <button class="btn add" data-id="p3">Add to cart</button>
+                    </article>
+
+                    <article class="card product" data-id="p4" data-name="Tablet" data-price="299.99">
+                        <div class="product-image"></div>
+                        <h3>Tablet</h3>
+                        <p class="muted">Portable tablet for media and reading.</p>
+                        <div class="price">$299.99</div>
+                        <button class="btn add" data-id="p4">Add to cart</button>
+                    </article>
+
+                    <article class="card product" data-id="p5" data-name="Smartwatch" data-price="129.99">
+                        <div class="product-image"></div>
+                        <h3>Smartwatch</h3>
+                        <p class="muted">Track activity and notifications.</p>
+                        <div class="price">$129.99</div>
+                        <button class="btn add" data-id="p5">Add to cart</button>
+                    </article>
+
+                    <article class="card product" data-id="p6" data-name="Backpack" data-price="49.99">
+                        <div class="product-image"></div>
+                        <h3>Backpack</h3>
+                        <p class="muted">Durable everyday backpack.</p>
+                        <div class="price">$49.99</div>
+                        <button class="btn add" data-id="p6">Add to cart</button>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer style="text-align:center;margin-top:22px;color:var(--muted)">© <span id="year"></span> E‑Shop</footer>
+    </div>
+
+    <div id="toast" class="toast">Added to cart</div>
+
+    <script>
+        // Basic cart helper: store items in localStorage under 'cart'
+        function getCart(){return JSON.parse(localStorage.getItem('cart')||'[]')}
+        function saveCart(c){localStorage.setItem('cart',JSON.stringify(c))}
+        function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1400)}
+
+        document.querySelectorAll('.add').forEach(btn=>btn.addEventListener('click',function(){
+            var id=this.dataset.id;var card=this.closest('.product');
+            var item={id:id,name:card.dataset.name,price:parseFloat(card.dataset.price),quantity:1}
+            var cart=getCart();
+            var found=cart.find(i=>i.id===id);
+            if(found) found.quantity+=1; else cart.push(item);
+            saveCart(cart); showToast(item.name + ' added');
+        }))
+
+        document.getElementById('clearFilter').addEventListener('click',()=>{
+            document.getElementById('search').value='';document.getElementById('category').value='all';
+            // In a real app, re-fetch or re-render list. Here we keep static.
+        })
+
+        // Simple search filter (client-side, static)
+        document.getElementById('search').addEventListener('input',function(){
+            var q=this.value.toLowerCase();
+            document.querySelectorAll('.product').forEach(p=>{
+                var name=p.dataset.name.toLowerCase();
+                p.style.display = name.indexOf(q) === -1 ? 'none' : '';
+            })
+        })
+
+        document.getElementById('year').textContent=new Date().getFullYear();
+    </script>
+</body>
+</html>

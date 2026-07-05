@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact — E‑Shop</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="wrap">
+    <header class="site">
+      <a class="logo" href="index.html">E‑Shop</a>
+      <nav class="muted"><a href="products.html" style="margin-right:8px">Products</a>  <a href="about.html" style="margin-right:8px">About</a></nav> <a href="cart.html" style="float:right">Cart</a> <a href="index.html" style="float:right;margin-right:8px">Home</a>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Contact Us</h2>
+        <p class="muted">Have a question or need help? Send us a message and we'll get back within 1 business day.</p>
+        <form id="contactForm">
+          <label for="name">Name</label>
+          <input id="name" name="name" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <div style="margin-top:12px">
+            <button class="btn" type="submit">Send Message</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="card contact-info">
+        <h3 style="margin-top:0">Get in touch</h3>
+        <p class="muted">Email: <a href="mailto:support@eshop.example">support@eshop.example</a></p>
+        <p class="muted">Phone: <strong>(555) 123‑4567</strong></p>
+        <h4 style="margin-top:12px">Business hours</h4>
+        <p class="muted">Mon–Fri, 9am–5pm</p>
+
+        <h4 style="margin-top:12px">FAQ</h4>
+        <p><strong>Returns?</strong> See our <a href="about.html">returns policy</a>.</p>
+      </aside>
+    </main>
+
+    <footer style="text-align:center;margin-top:22px;color:var(--muted)">© <span id="year"></span> E‑Shop</footer>
+  </div>
+
+  <div id="toast" class="toast">Message sent</div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    var form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = {name: form.name.value, email: form.email.value, message: form.message.value, date: new Date().toISOString()};
+      // store messages locally as a simulation of sending
+      try{
+        var msgs = JSON.parse(localStorage.getItem('messages')||'[]'); msgs.push(data); localStorage.setItem('messages', JSON.stringify(msgs));
+      }catch(e){}
+      var t = document.getElementById('toast'); t.textContent = 'Message sent — we will contact you soon'; t.style.display='block';
+      setTimeout(()=>t.style.display='none',2000);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
